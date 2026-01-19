@@ -16,30 +16,33 @@ def divide(a, b):
     return a / b
 
 
-st.title("🧮 Simple Calculator")
+st.title("🧮 Button Calculator")
 
-st.write("Perform basic arithmetic operations using Streamlit")
-
+# Inputs
 num1 = st.number_input("Enter first number", value=0.0)
 num2 = st.number_input("Enter second number", value=0.0)
 
-operation = st.selectbox(
-    "Choose an operation",
-    ("Add", "Subtract", "Multiply", "Divide")
-)
+st.write("### Choose Operation")
 
-if st.button("Calculate"):
-    try:
-        if operation == "Add":
-            result = add(num1, num2)
-        elif operation == "Subtract":
-            result = subtract(num1, num2)
-        elif operation == "Multiply":
-            result = multiply(num1, num2)
-        elif operation == "Divide":
-            result = divide(num1, num2)
+col1, col2, col3, col4 = st.columns(4)
 
+result = None
+
+try:
+    if col1.button("➕ Add"):
+        result = add(num1, num2)
+
+    if col2.button("➖ Subtract"):
+        result = subtract(num1, num2)
+
+    if col3.button("✖ Multiply"):
+        result = multiply(num1, num2)
+
+    if col4.button("➗ Divide"):
+        result = divide(num1, num2)
+
+    if result is not None:
         st.success(f"Result: {result}")
 
-    except ValueError as e:
-        st.error(str(e))
+except ValueError as e:
+    st.error(str(e))
