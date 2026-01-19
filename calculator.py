@@ -1,6 +1,5 @@
 import streamlit as st
 
-# Calculator functions
 def add(a, b):
     return a + b
 
@@ -16,7 +15,7 @@ def divide(a, b):
     return a / b
 
 
-st.title("🧮 Button Calculator")
+st.title("🧮 Calculator")
 
 # Inputs
 num1 = st.number_input("Enter first number", value=0.0)
